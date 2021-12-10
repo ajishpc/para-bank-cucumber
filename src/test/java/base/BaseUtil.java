@@ -56,6 +56,8 @@ public class BaseUtil {
         prop.load(stream);
         return (prop.getProperty("username"));
     }
+
+    //GET THE PASSWORD FROM CONFIG FILE
     public String getPassword() throws IOException {
         prop = new Properties();
         configFile=new File("config.properties");
