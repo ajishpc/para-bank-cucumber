@@ -13,8 +13,8 @@
         <webdriver.manager>5.0.3</webdriver.manager>
         <selenium.java>4.0.0</selenium.java>
         <cucumber-reporting.version>5.6.2</cucumber-reporting.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
         <slf4j.version>2.0.0-alpha5</slf4j.version>
         <maven-surefire-plugin>3.0.0-M5</maven-surefire-plugin>
         <assertj-core.version>3.21.0</assertj-core.version>
