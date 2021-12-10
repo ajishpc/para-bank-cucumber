@@ -1,23 +1,66 @@
 package base;
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import java.io.*;
+import java.util.Properties;
+
 public class BaseUtil {
 
-    public static WebDriver Driver;
-    public ExtentReports extent;
+    public static WebDriver driver;
+    public Properties prop;
+    public File configFile;
+    public InputStream stream;
 
+    public void initializeBrowser(){
+        final WebDriver driver;
+        // INITIALIZE THE DRIVER
+        ChromeOptions chromeOptions=new ChromeOptions();
+        chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments("--window-size=1920,1080");
+        chromeOptions.addArguments("--ignore-certificate-errors");
+        chromeOptions.addArguments("--no-sandbox");
+        chromeOptions.addArguments("--disable-dev-shm-usage");
+        WebDriverManager.chromedriver().setup();
+        System.out.println("I AM HERE -----BEFORE DRIVER IS CREATED");
 
-    public static ExtentTest scenarioDef;
+        driver = new ChromeDriver(chromeOptions);
 
-    public static ExtentTest features;
-    public static String username="jmalik";
-    public static String password="jmalik";
+        System.out.println("THIS IS THE ORIGINAL DRIVER -----DRIVER IS CREATED"+ driver);
+        setDriver(driver);
+        System.out.println("I AM HERE -----SET DRIVER IS CALLED");
+    }
 
-    public static String reportLocation = "user.dir";
-    public static String baseURL ="https://parabank.parasoft.com/parabank/index.htm";
+    public WebDriver getDriver() {
+        return driver;
+    }
 
-    public String getBaseURL(){return baseURL;}
+    public void setDriver(WebDriver driver) {
+        this.driver = driver;
+        System.out.println("THIS IS THE DRIVER SET"+ this.driver);
+    }
 
-
+    public String getBaseURL() throws IOException {
+        prop = new Properties();
+        configFile=new File("config.properties");
+        stream=new FileInputStream(configFile);
+        prop.load(stream);
+        return (prop.getProperty("baseURL"));
+    }
+    public String getUsername() throws IOException {
+        prop = new Properties();
+        configFile=new File("config.properties");
+        stream=new FileInputStream(configFile);
+        prop.load(stream);
+        return (prop.getProperty("username"));
+    }
+    public String getPassword() throws IOException {
+        prop = new Properties();
+        configFile=new File("config.properties");
+        stream=new FileInputStream(configFile);
+        prop.load(stream);
+        return (prop.getProperty("password"));
+    }
 }
