@@ -1,5 +1,6 @@
 Feature: Login functionality
 
+  @SanityTest
   Scenario: Login Successful
 
     Given the user is on the login page of the Para Bank application
