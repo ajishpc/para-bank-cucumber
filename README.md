@@ -2,6 +2,8 @@
 
 Automated Test for Para Bank web application
 
-Use of Cucumber, Selenium 4 and Java
+Use of **Cucumber**, **Selenium 4** , **Java**, **Maven cucumber reporting**
 
-Cucumber Reporting: https://ajishpc.github.io/para-bank-cucumber/cucumber-html-reports/overview-features.html
+Integrate with **Github Actions** CI and publish the test results on **Github Pages**
+
+**Cucumber Reporting**: https://ajishpc.github.io/para-bank-cucumber/cucumber-html-reports/overview-features.html
